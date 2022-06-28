@@ -96,3 +96,9 @@ http://localhost:8080/ - If running on the local machine. (Recommended for now)
 | :-------- | :------- | :-------------------------------- |
 | No Parameter required      |- |Get the List of company along the array of teamLeads
 
+
+## Documentation
+After running the application the documentation can be seen here
+[Documentation](http://localhost:8080/swagger-ui.html) (http://localhost:8080/swagger-ui.html)
+
+
