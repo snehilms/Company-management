@@ -54,7 +54,7 @@ public class CompanyController {
 	}
 	
 	@GetMapping("/get_company_name/{comp_name}")
-	public Optional<Company> getCompanyByName(@RequestBody String comp_name)
+	public Company getCompanyByName(@PathVariable String comp_name)
 	{
 		return companyService.getCompanyByName(comp_name);
 		

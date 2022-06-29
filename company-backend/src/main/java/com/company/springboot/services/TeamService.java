@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.company.springboot.dto.ITeamDTO;
 import com.company.springboot.model.Company;
 import com.company.springboot.model.Team;
+import com.company.springboot.repository.CompanyRepository;
 import com.company.springboot.repository.TeamRepository;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -19,14 +20,15 @@ public class TeamService implements ITeamService{
 	
 	@Autowired
 	TeamRepository teamrepository;
+	@Autowired
+	CompanyRepository compRepo;
 	
 	@Override
 	public Team createTeam(JsonNode newTeam, int comp_id) {
 		
 		JsonNode leadName = newTeam.get("leadName");
-		Company company = new Company();
-		company.setId(comp_id);
-		Team createdTeam = new Team(leadName.textValue(),company);
+		Company registered_company= compRepo.getById(comp_id);
+		Team createdTeam = new Team(leadName.textValue(),registered_company);
 		teamrepository.save(createdTeam);
 		return createdTeam;
 	}
