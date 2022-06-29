@@ -71,7 +71,7 @@ http://localhost:8080/ - If running on the local machine. (Recommended for now)
 
 
 ```http
-  GET /company//get_company_name/{comp_name}
+  GET /company/get_company_name/{comp_name}
 ```
 
 | Parameter | Type     | Description                       |
@@ -79,7 +79,7 @@ http://localhost:8080/ - If running on the local machine. (Recommended for now)
 | Name of company      |String |Get the company by Name from the database
 
 ```http
-  POST /team//create_team/{comp_id}
+  POST /team/create_team/{comp_id}
 ```
 
 | Parameter | Type     | Description                       |
