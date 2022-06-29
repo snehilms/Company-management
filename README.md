@@ -32,7 +32,7 @@ http://localhost:8080/ - If running on the local machine. (Recommended for now)
 #### Get all items
 
 ```http
-  POST login
+  POST /login
 ```
 
 | Parameter | Type     | Description                |
