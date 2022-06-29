@@ -26,6 +26,7 @@ Eg:![Screenshot 2022-06-29 114144](https://user-images.githubusercontent.com/421
 
 After successfully hitting the login api, an access token and refresh token will be generated which can be used for accessing the other apis
 by using the authorization bearer header as : Bearer <access_token>
+![Screenshot 2022-06-29 130432](https://user-images.githubusercontent.com/42109401/176378901-0c942711-1e1f-4f6e-8ad4-d09b6091e3bb.png)
 
 All APIs will be accessible now depending upon the role of the user.
 
