@@ -75,6 +75,8 @@ http://localhost:8080/ - If running on the local machine. (Recommended for now)
 | :-------- | :------- | :-------------------------------- |
 | id in path      |Numeric |Get Company by the provided id from the database |
 
+![Screenshot 2022-06-29 120014](https://user-images.githubusercontent.com/42109401/176378634-9e49eb26-e5e0-459e-a883-0f118e5dffa4.png)
+
 
 ```http
   GET /company/get_company_name/{comp_name}
@@ -83,6 +85,8 @@ http://localhost:8080/ - If running on the local machine. (Recommended for now)
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
 | Name of company      |String |Get the company by Name from the database
+
+![Screenshot 2022-06-29 121730](https://user-images.githubusercontent.com/42109401/176378628-99a6af4d-4358-4ecf-9cc0-9a9a2fb9cc5e.png)
 
 ```http
   POST /team/create_team/{comp_id}
