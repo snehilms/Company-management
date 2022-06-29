@@ -66,9 +66,40 @@ public class TeamControllerTest {
     }
 
     @Test
-    public void testGetTeams() throws Exception {
+    public void testCreateTeam2() throws Exception {
+        Company company = new Company();
+        company.setId(1);
+        company.setCompName("Comp Name");
+        company.setCompAddr("42 Main St");
+        company.setCompCeo("Comp Ceo");
+        company.setDate("2020-03-01");
+
+        Team team = new Team();
+        team.setLeadName("Lead Name");
+        team.setId(1);
+        team.setCompId(company);
+        when(this.iTeamService.createTeam((com.fasterxml.jackson.databind.JsonNode) any(), anyInt())).thenReturn(team);
+        MockHttpServletRequestBuilder contentTypeResult = MockMvcRequestBuilders.post("/team/create_team/{comp_id}", 1)
+                .contentType(MediaType.APPLICATION_JSON);
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        MockHttpServletRequestBuilder requestBuilder = contentTypeResult
+                .content(objectMapper.writeValueAsString(DoubleNode.valueOf(10.0)));
+        MockMvcBuilders.standaloneSetup(this.teamController)
+                .build()
+                .perform(requestBuilder)
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.content().contentType("application/json"))
+                .andExpect(MockMvcResultMatchers.content()
+                        .string(
+                                "{\"id\":1,\"leadName\":\"Lead Name\",\"compId\":{\"id\":1,\"compName\":\"Comp Name\",\"compCeo\":\"Comp Ceo\",\"compAddr\":\"42"
+                                        + " Main St\",\"date\":\"2020-03-01\"}}"));
+    }
+
+    @Test
+    public void testGetTeams2() throws Exception {
         when(this.iTeamService.getTeams()).thenReturn(new HashMap<String, JsonNode>(1));
-        MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders.post("/team/get_teams");
+        MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders.get("/team/get_teams");
         MockMvcBuilders.standaloneSetup(this.teamController)
                 .build()
                 .perform(requestBuilder)
@@ -78,16 +109,16 @@ public class TeamControllerTest {
     }
 
     @Test
-    public void testGetTeams2() throws Exception {
+    public void testGetTeams3() throws Exception {
         when(this.iTeamService.getTeams()).thenReturn(new HashMap<String, JsonNode>(1));
-        MockHttpServletRequestBuilder postResult = MockMvcRequestBuilders.post("/team/get_teams");
-        postResult.contentType("Not all who wander are lost");
+        MockHttpServletRequestBuilder getResult = MockMvcRequestBuilders.get("/team/get_teams");
+        getResult.contentType("Not all who wander are lost");
         MockMvcBuilders.standaloneSetup(this.teamController)
                 .build()
-                .perform(postResult)
+                .perform(getResult)
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().contentType("application/json"))
                 .andExpect(MockMvcResultMatchers.content().string("{}"));
     }
-}
 
+}
